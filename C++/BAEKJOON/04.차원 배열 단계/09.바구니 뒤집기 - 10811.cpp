@@ -1,10 +1,12 @@
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
 int main()
 {
-    int n, m, i, j, temp;
+    int n, m;
+    int i, j;
     cin >> n >> m;
     int array[n];
 
@@ -15,12 +17,8 @@ int main()
     {
         cin >> i >> j;
         
-        for (int y = 0; y < j-i/2; y++)
-        {
-            temp = array[i+y];
-            array[i+y] = array[j-y];
-            array[j-y] = temp;
-        }
+        for (int y = 0; y < round((float)(j-i)/2); y++)
+            swap(array[i+y-1], array[j-y-1]);
     }
 
     for (int x = 0; x < n; x++)
