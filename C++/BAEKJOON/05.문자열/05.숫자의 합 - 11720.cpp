@@ -9,12 +9,7 @@ int main()
     string str;
     cin >> num >> str;
     for (int i = 0; i < num; i++)
-    {
-        //int sum = (int)str % 10;
-        // value += sum;
-        // index -= sum;
-        // index *= 0.1f;
-    }    
+        value += str[i] - '0';
 
     cout << value;
 }
