@@ -1,35 +1,34 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 using namespace std;
 
-int IsPaliindrome(string s, int &index);
-int Recursion(string s, int l, int r,int &index);
+int IsPaliindrome(char *s, int &index);
+int Recursion(char *s, int l, int r,int &index);
 
 int main()
 {
     int t, index = 0;
     cin >> t;
-    string sArray[t];
+    char cArray[1001];
 
     for (int i = 0; i < t; i++)
-        cin >> sArray[i];
-    for (int i = 0; i < t; i++)
     {
-        cout << IsPaliindrome(sArray[i], index) << ' ';
+        cin >> cArray;
+        cout << IsPaliindrome(cArray, index) << ' ';
         cout << index << '\n';
         index = 0;
     }
 }
 
-int IsPaliindrome(string s, int &index)
+int IsPaliindrome(char *s, int &index)
 {
-    return Recursion(s, 0, s.size()-1, index);
+    return Recursion(s, 0, strlen(s)-1, index);
 }
 
-int Recursion(string s, int l, int r,int &index)
+int Recursion(char *s, int l, int r,int &index)
 {
     index++;
-    if(l > r-1)
+    if(l >= r)
         return 1;
     else if(s[l] != s[r]) 
         return 0;
