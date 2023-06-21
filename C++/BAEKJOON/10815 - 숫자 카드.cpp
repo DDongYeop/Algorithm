@@ -5,6 +5,10 @@ using namespace std;
 
 int main()
 {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    
 	unordered_set<int> s1;
 
 	int loop, input;
