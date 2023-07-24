@@ -22,10 +22,7 @@ int main()
                 }
             }
             if (flag)
-            {
-                answer.erase(answer.end() - find.size(), answer.end());
-                answer += 'P';
-            }
+                answer.replace(answer.end() - find.size(), answer.end(), "P");
         }
     }
 
@@ -33,6 +30,4 @@ int main()
         cout << "PPAP";
     else
         cout << "NP";
-
-    return 0;
 }
