@@ -1,21 +1,20 @@
 #include <iostream>
 #include <vector>
-#include <deque>
+#include <queue>
 
 using namespace std;
 
 int main()
 {
-    int n, m, k, x, input1, input2, lastIndex, index = 1;
-    deque<int> deq;
-    bool _isThere = false;
+    int n, m, k, x, input1, input2;
+    bool isPrint = false;
     vector<vector<int>> graph;
     vector<int> visited;
+    queue<int> q;
     cin >> n >> m >> k >> x;
 
     graph.resize(n + 1);
-    visited.resize(n + 1, 0);
-    lastIndex = x;
+    visited.resize(n + 1, -1);
 
     while (m--)
     {
@@ -23,34 +22,32 @@ int main()
         graph[input1].push_back(input2);
     }
 
-    deq.push_back(x);
-    visited[deq.front()] = -1;
-    while (!deq.empty())
-    {
-        for (auto i : graph[deq.front()])
-        {
-            if (visited[i] != 0)
-                continue;
-            deq.push_back(i);
-            visited[i] = index;
-        }
+    q.push(x);
+    visited[x] = 0;
 
-        if (lastIndex == deq.front())
+    while (!q.empty())
+    {
+        m = q.front();
+        q.pop();
+
+        for (int i : graph[m])
         {
-            lastIndex = deq.back();
-            ++index;
+            if (visited[i] != -1)
+                continue;
+
+            q.push(i);
+            visited[i] = visited[m] + 1;
         }
-        deq.pop_front();
     }
 
-    for (int i = 1; i <= n; ++i)
+    for (int i = 1; i < graph.size(); ++i)
     {
         if (visited[i] == k)
         {
             cout << i << '\n';
-            _isThere = true;
+            isPrint = true;
         }
     }
-    if (!_isThere)
-        cout << "-1";
+    if (!isPrint)
+        cout << -1;
 }
