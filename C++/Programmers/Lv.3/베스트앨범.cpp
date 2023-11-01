@@ -19,8 +19,6 @@ vector<int> solution(vector<string> genres, vector<int> plays)
     for (int i = 0; i < plays.size(); ++i)
     {
         vec.push_back(make_pair(plays[i], i));
-        if (countM.find(genres[i]) == countM.end())
-            countM.insert(make_pair(genres[i], 0));
         countM[genres[i]] += plays[i];
     }
     for (auto p1 : countM)
