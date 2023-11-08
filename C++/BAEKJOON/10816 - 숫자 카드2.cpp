@@ -1,34 +1,31 @@
-#include<iostream>
-#include<unordered_map>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout.tie(nullptr);
 
-    int input, input2;
-    unordered_map<int, int> um;
-    cin >> input;
+	int loop, input;
+	vector<int> vec;
 
-    while (input--)
-    {
-        cin >> input2;
-        if (um.find(input2) == um.end())
-            um.insert(make_pair(input2, 1));
-        else
-            ++um[input2];
-    }
+	cin >> loop;
+	while (loop--)
+	{
+		cin >> input;
+		vec.push_back(input);
+	}
 
-    cin >> input;
-    while (input--)
-    {
-        cin >> input2;
-        if (um.find(input2) == um.end())
-            cout << 0 << ' ';
-        else
-            cout << um[input2] << ' ';
-    }
+	sort(vec.begin(), vec.end());
+
+	cin >> loop;
+	while (loop--)
+	{
+		cin >> input;
+		cout << upper_bound(vec.begin(), vec.end(), input) - lower_bound(vec.begin(), vec.end(), input) << ' ';
+	}
 }
