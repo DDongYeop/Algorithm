@@ -16,8 +16,6 @@ int main()
     long long n, m, input;
 
     cin >> n >> m;
-    tree.resize(n);
-
     while (n--)
     {
         cin >> input;
@@ -43,7 +41,7 @@ long long binarySearch(long long n, long long m)
 
         if (sum >= m)
             left = cutting + 1;
-        else // 
+        else 
             right = cutting - 1;
     }
     return right;
