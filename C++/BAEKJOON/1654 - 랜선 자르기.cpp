@@ -14,7 +14,7 @@ int main()
     int loop, input;
 
     cin >> loop >> n;
-    for (int i = 0; i < loop; ++i)
+    while(loop--)
     {
         cin >> input;
         vec.push_back(input);
@@ -27,7 +27,6 @@ int main()
 int BinarySearch()
 {
     unsigned long long left = 1, right = vec.back() * n, center, sum;
-    int index = vec.back();
 
     while (left <= right)
     {
