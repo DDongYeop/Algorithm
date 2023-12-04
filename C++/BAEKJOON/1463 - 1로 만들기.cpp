@@ -1,28 +1,22 @@
 #include <iostream>
-#include <queue>
 
 using namespace std;
 
+int dp[1000001] = { 0 };
+
 int main()
 {
-    int index;
-    queue<pair<int, int>> q;
+	int n;
+	cin >> n;
 
-    cin >> index;
-    q.push(make_pair(index, 0));
+	for (int i = 2; i <= n; ++i)
+	{
+		dp[i] = 1 + dp[i - 1];
+		if (i % 3 == 0)
+			dp[i] = min(dp[i], 1 + dp[i / 3]);
+		if (i % 2 == 0)
+			dp[i] = min(dp[i], 1 + dp[i / 2]);
+	}
 
-    while (!q.empty())
-    {
-        if (q.front().first == 1)
-            break;
-
-        if (q.front().first % 2 == 0)
-            q.push(make_pair(q.front().first / 2, q.front().second + 1));
-        if (q.front().first % 3 == 0)
-            q.push(make_pair(q.front().first / 3, q.front().second + 1));
-        q.push(make_pair(q.front().first - 1, q.front().second + 1));
-        q.pop();
-    }
-
-    cout << q.front().second;
+	cout << dp[n];
 }
